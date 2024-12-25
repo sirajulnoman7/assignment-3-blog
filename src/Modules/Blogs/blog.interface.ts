@@ -1,3 +1,5 @@
+import { Types } from 'mongoose';
+
 export type TAuthor = {
   name: string;
   email: string;
@@ -8,6 +10,6 @@ export type TAuthor = {
 export type TBlog = {
   title: string;
   content: string;
-  author: TAuthor;
+  author: Types.ObjectId;
   isPublished?: boolean;
 };

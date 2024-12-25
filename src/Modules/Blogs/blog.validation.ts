@@ -8,19 +8,8 @@ const blogValidationSchema = z.object({
     content: z.string({
       required_error: 'Content is required',
     }),
-    author: z.object({
-      name: z.string({
-        required_error: 'Name is required',
-      }),
-      email: z
-        .string({
-          required_error: 'Email is required',
-        })
-        .email(),
-      contactNo: z.string({
-        required_error: 'Contact number is required',
-      }),
-      authorImage: z.string().optional(),
+    author: z.string({
+      required_error: 'author is required',
     }),
     isPublished: z.boolean({
       required_error: 'Is published is required',

@@ -5,6 +5,7 @@ import sendResponse from '../Utility/ResponseType';
 
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await userServices.getAllUsers();
+  console.log('test parpose', req.user);
   sendResponse(res, {
     success: true,
     statusCode: 200,

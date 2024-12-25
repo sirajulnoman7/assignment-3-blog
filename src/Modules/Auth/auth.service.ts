@@ -12,6 +12,7 @@ const registerUser = async (payload: TUser) => {
 
 const loginUser = async (email: string, password: string) => {
   const user = await User.findOne({ email }).select('+password');
+
   const hashPassword = await bcrypt.compare(password, user?.password as string);
   // console.log(hashPassword);
 

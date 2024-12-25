@@ -4,9 +4,25 @@ import authValidationRequest from '../GlobalMiddleware/CheckValidationRequest/au
 
 const userRoute = Router();
 
-userRoute.get('/users', authValidationRequest(), userController.getAllUsers);
-userRoute.get('/users/:id', userController.getSingleUsers);
-userRoute.patch('/users/:id', userController.updateUser);
-userRoute.delete('/users/:id', userController.deleteUser);
+userRoute.get(
+  '/users',
+  authValidationRequest('admin'),
+  userController.getAllUsers,
+);
+userRoute.get(
+  '/users/:id',
+  authValidationRequest('admin'),
+  userController.getSingleUsers,
+);
+userRoute.patch(
+  '/users/:id',
+  authValidationRequest('user'),
+  userController.updateUser,
+);
+userRoute.delete(
+  '/users/:id',
+  authValidationRequest('admin'),
+  userController.deleteUser,
+);
 
 export default userRoute;
