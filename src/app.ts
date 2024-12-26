@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello assignment 3 on the prot 5000!');
+  res.send('Hello assignment 3 running on the prot 5000!');
 });
 app.use('/api', router);
 

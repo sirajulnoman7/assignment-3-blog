@@ -14,7 +14,7 @@ blogRoute.post(
 );
 blogRoute.get(
   '/blogs',
-  authValidationRequest('admin', 'user'),
+
   blogController.getAllBlogs,
 );
 blogRoute.get(
