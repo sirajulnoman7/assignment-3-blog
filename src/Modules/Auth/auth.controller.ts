@@ -6,8 +6,8 @@ import sendResponse from '../Utility/ResponseType';
 const registerUser = catchAsync(async (req: Request, res: Response) => {
   const result = await authServices.registerUser(req.body);
   sendResponse(res, {
-    success: true,
     statusCode: 200,
+    success: true,
     message: 'User registered successfully',
     data: result,
   });
@@ -16,8 +16,8 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const result = await authServices.loginUser(email, password);
   sendResponse(res, {
-    success: true,
     statusCode: 200,
+    success: true,
     message: 'User login successfully',
     data: result,
   });

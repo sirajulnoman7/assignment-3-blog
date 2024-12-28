@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { blogServices } from './blog.service';
 import catchAsync from '../Utility/catchAsync';
 import sendResponse from '../Utility/ResponseType';
+import { JwtPayload } from 'jsonwebtoken';
 
 const createBlog = catchAsync(async (req: Request, res: Response) => {
   const result = await blogServices.createBlog(req.body);
@@ -33,7 +34,7 @@ const getSingleBlogs = catchAsync(async (req: Request, res: Response) => {
 });
 const updateBlogs = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const decodedUser = req.user;
+  const decodedUser = req.user as JwtPayload;
   const result = await blogServices.updateBlogs(id, req.body, decodedUser);
   sendResponse(res, {
     statusCode: 200,
@@ -44,7 +45,7 @@ const updateBlogs = catchAsync(async (req: Request, res: Response) => {
 });
 const deleteBlogs = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await blogServices.deleteBlog(id, req.user);
+  const result = await blogServices.deleteBlog(id, req.user as JwtPayload);
   sendResponse(res, {
     statusCode: 200,
     success: true,

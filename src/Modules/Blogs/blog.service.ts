@@ -39,10 +39,10 @@ const updateBlogs = async (
   }
   const decodedUser = user?.jwtPayload;
 
-  // console.log('decodedUser', user);
+  console.log('decodedUser', user);
   const findAuthor = await User.findOne({ email: decodedUser?.email });
   const isAuthorAndUserMatch = isBlogExist?.author.equals(findAuthor?._id);
-  // console.log({ isBlogExist }, { findAuthor });
+  console.log({ isBlogExist }, { findAuthor });
   if (!isAuthorAndUserMatch) {
     throw new AppError(403, 'You can only update or delete your own blogs');
   }

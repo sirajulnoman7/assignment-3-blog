@@ -1,16 +1,17 @@
 import { Router } from 'express';
 import { adminController } from './admin.controller';
 import authValidationRequest from '../GlobalMiddleware/CheckValidationRequest/authValidationRequest';
+import { USER_ROLE } from '../Users/user.constant';
 
 const adminRoutes = Router();
 adminRoutes.patch(
-  '/users/:userId/block',
-  authValidationRequest('admin'),
+  '/admin/users/:userId/block',
+  authValidationRequest(USER_ROLE.admin),
   adminController.blockUser,
 );
 adminRoutes.delete(
-  '/blogs/:id',
-  authValidationRequest('admin'),
+  '/admin/blogs/:id',
+  authValidationRequest(USER_ROLE.admin),
   adminController.deleteBlog,
 );
 
