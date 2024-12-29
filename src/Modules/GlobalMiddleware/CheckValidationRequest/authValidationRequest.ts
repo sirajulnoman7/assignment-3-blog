@@ -8,8 +8,9 @@ import User from '../../Users/user.model';
 
 const authValidationRequest = (...requiredRoles: string[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    // const token = req.headers.authorization;
     const authorizationToken = req.headers.authorization;
-    console.log({ authorizationToken });
+    // console.log({ authorizationToken });
 
     //  removed the Bearer word
     const token = authorizationToken?.split('Bearer ')[1];
