@@ -37,9 +37,9 @@ const loginUser = async (email: string, password: string) => {
       jwtPayload,
     },
     config.jwt_token_secret as string,
-    { expiresIn: '1d' },
+    { expiresIn: '10d' },
   );
-  return accessToken;
+  return { accessToken };
 };
 
 export const authServices = {
